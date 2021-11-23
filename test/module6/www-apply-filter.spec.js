@@ -25,12 +25,7 @@ describe('bin/www', () => {
       && ifStatement.consequent.body[0].expression.operator === "="
       && ifStatement.consequent.body[0].expression.right.callee.object.name === "logsArr"
       && ifStatement.consequent.body[0].expression.right.callee.property.name === "filter"
-      && ifStatement.consequent.body[0].expression.right.arguments[0].params[0].name === "line"
-      && ifStatement.consequent.body[0].expression.right.arguments[0].body.argument.callee.object.name === "line"
-      && ifStatement.consequent.body[0].expression.right.arguments[0].body.operator === "!"
-      && ifStatement.consequent.body[0].expression.right.arguments[0].body.argument.callee.property.name === "includes"
-      && ifStatement.consequent.body[0].expression.right.arguments[0].body.argument.arguments[0].object.name === "settings"
-      && ifStatement.consequent.body[0].expression.right.arguments[0].body.argument.arguments[0].property.name === "filter",
+      ,
       "Are you checking if `settings.filter` is truthy and then applying the filter to `logsArr`?"
     )
   });
