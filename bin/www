@@ -35,16 +35,13 @@ server.on("listening", onListening);
 wss.on("connection", function(ws) {
   ws.on("message", function(filePath) {
     // ws.send("Hello from the server! You sent: " + message);
-    
-    fs.watch(filePath, function() {
-      var readStream = fs.createReadStream(filePath);
-      readStream.on('data', function (chunk) {
+    fs.watch(filePath, function(){
+      fs.createReadStream(filePath).on('data', function (chunk) {
         var logsArr = chunk.toString().split("\n");
         var logsStr = logsArr.reverse().join("\n");
         ws.send(logsStr);
       });
-    });
-   
+    })   
   });
 });
 
